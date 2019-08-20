@@ -10,9 +10,9 @@ class XGBoostClassifier:
         self.label_level = level
         self.num_epochs = epochs
         self.model_path = f'./models/xgboost_{self.label_level}.model'
+        self.num_classes = len(json.load(open('./data/mapping.json')))
         self.training_params = {'objective': 'multi:softmax', 'num_class': self.num_classes, 'tree_method': 'gpu_hist', 'predictor': 'cpu_predictor'}
         # self.training_params = {'objective': 'multi:softmax', 'num_class': self.num_classes}
-        self.num_classes = len(json.load(open('./data/mapping.json')))
         self.train_data = './data/traindata.parquet'
         self.val_data = './data/valdata.parquet'
         self.test_data = './data/testdata.parquet'
