@@ -1,0 +1,13 @@
+version: '2.3'
+services:
+  ad-category-classifier:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ad-category-classifier:classifier
+    container_name: ad-category-container
+    runtime: nvidia
+    volumes:
+      - .:/app
+    command: /bin/bash
+    tty: true
