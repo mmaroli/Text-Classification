@@ -16,17 +16,17 @@ Build the Docker Container:
 
 Inside Docker:
   Install CMake:
-    + `yes yes | bash /opt/cmake-3.15.2-Linux-x86_64.sh`
-    + `ln -s /app/cmake-3.15.2-Linux-x86_64/bin/cmake /usr/bin`
-    + `cmake --version`
+    + `yes yes | bash /opt/cmake-3.15.2-Linux-x86_64.sh`  
+    + `ln -s /app/cmake-3.15.2-Linux-x86_64/bin/cmake /usr/bin`  
+    + `cmake --version`  
 
   Install XGBoost (https://xgboost.readthedocs.io/en/latest/build.html):
-    + `git clone --recursive https://github.com/dmlc/xgboost`
-    + `cd xgboost`
-    + `mkdir build`
-    + `cd build`
-    + `cmake .. -DUSE_CUDA=ON`
-    + `make -j4`
+    + `git clone --recursive https://github.com/dmlc/xgboost`  
+    + `cd xgboost`  
+    + `mkdir build`  
+    + `cd build`  
+    + `cmake .. -DUSE_CUDA=ON`  
+    + `make -j4`  
 
   XGBoost Python Package Download:  
     + `cd python-package && python setup.py install`
