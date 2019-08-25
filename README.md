@@ -15,6 +15,8 @@ Build the Docker Container:
   + `make build`
 
 Install CMake:  
+  + `curl -L https://github.com/Kitware/CMake/releases/download/v3.15.2/cmake-3.15.2-Linux-x86_64.sh -o /opt/cmake-3.15.2-Linux-x86_64.sh`
+  + `chmod +x /opt/cmake-3.15.2-Linux-x86_64.sh`
   + `yes yes | bash /opt/cmake-3.15.2-Linux-x86_64.sh`  
   + `ln -s /app/cmake-3.15.2-Linux-x86_64/bin/cmake /usr/bin`  
   + `cmake --version`  
@@ -23,7 +25,7 @@ Install XGBoost (https://xgboost.readthedocs.io/en/latest/build.html):
   + `git clone --recursive https://github.com/dmlc/xgboost`  
   + `cd xgboost`  
   + `mkdir build`  
-  + `cd build`  
+  + `cd build`
   + `cmake .. -DUSE_CUDA=ON`  
   + `make -j4`  
 
