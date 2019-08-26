@@ -16,7 +16,6 @@ class XGBoostClassifier:
                                 'tree_method': 'hist',
                                 'predictor': 'cpu_predictor'
                                 }
-        # self.training_params = {'objective': 'multi:softmax', 'num_class': self.num_classes}
         self.train_data = './data/traindata.parquet'
         self.val_data = './data/valdata.parquet'
         self.test_data = './data/testdata.parquet'
