@@ -13,7 +13,7 @@ class XGBoostClassifier:
         self.num_classes = len(json.load(open('./data/mapping.json')))
         self.training_params = {'objective': 'multi:softmax',
                                 'num_class': self.num_classes,
-                                'tree_method': 'gpu_hist',
+                                'tree_method': 'hist',
                                 'predictor': 'cpu_predictor'
                                 }
         # self.training_params = {'objective': 'multi:softmax', 'num_class': self.num_classes}
