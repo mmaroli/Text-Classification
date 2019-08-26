@@ -68,6 +68,7 @@ class XGBoostClassifier:
 
     def train(self):
         """ Train XG Boost Model """
+        print("Training xgboost model...")
         xg_val = self.one_chunk()
         chunk_train, chunk_labels = next(self.get_chunks())
         xg_train = xgb.DMatrix(chunk_train, label=chunk_labels)
