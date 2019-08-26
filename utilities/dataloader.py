@@ -168,9 +168,9 @@ class XGBoostLoader:
         df = self.encode_labels()
         train_df, val_df, test_df = self.split_dataset(df)
 
-        self.write_parquet(np.array_split(train_df, 100), 'traindata.parquet')
-        self.write_parquet(np.array_split(val_df, 100), 'valdata.parquet')
-        self.write_parquet(np.array_split(test_df, 100), 'testdata.parquet')
+        self.write_parquet(np.array_split(train_df, 1), 'traindata.parquet')
+        self.write_parquet(np.array_split(val_df, 1), 'valdata.parquet')
+        self.write_parquet(np.array_split(test_df, 1), 'testdata.parquet')
 
 
 
