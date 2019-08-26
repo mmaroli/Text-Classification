@@ -69,14 +69,8 @@ class XGBoostClassifier:
     def train(self):
         """ Train XG Boost Model """
         xg_val = self.one_chunk()
-        for epoch in range(self.num_epochs):
-            print(f"Epochs: {epoch+1}/{self.num_epochs}...")
-            for iter, (chunk_train, chunk_labels) in enumerate(self.get_chunks()):
-                print(f"Iteration: {iter+1}/100...")
-                xg_train = xgb.DMatrix(chunk_train, label=chunk_labels)
-                evallist = [(xg_val, 'val'), (xg_train, 'train')]
-                if not os.path.exists(self.model_path):
-                    model = xgb.train(self.training_params, xg_train, 10, evallist)
-                else:
-                    model = xgb.train(self.training_params, xg_train, 10, evallist, xgb_model=self.model_path)
-                model.save_model(self.model_path)
+        chunk_train, chunk_labels = next(self.get_chunks())
+        xg_train = xgb.DMatrix(chunk_train, label=chunk_labels)
+        evallist = [(xg_val, 'val'), (xg_train, 'train')]
+        model = xgb.train(self.training_params, xg_train, 5, evallist)
+        model.save_model(self.model_path)
