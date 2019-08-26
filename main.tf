@@ -26,7 +26,7 @@ data "google_compute_image" "my_image" {
 
 resource "google_compute_instance" "default" {
   name = "gpu-training"
-  machine_type = "n1-highmem-4"
+  machine_type = "n1-standard-16"
   zone = "us-west1-b"
   tags = ["externalssh"]
 
@@ -45,14 +45,14 @@ resource "google_compute_instance" "default" {
     }
   }
 
-  guest_accelerator {
-    type = "nvidia-tesla-k80"
-    count = 1
-  }
-
-  scheduling {
-    on_host_maintenance = "TERMINATE" // Required for GPU
-  }
+  # guest_accelerator {
+  #   type = "nvidia-tesla-k80"
+  #   count = 1
+  # }
+  #
+  # scheduling {
+  #   on_host_maintenance = "TERMINATE" // Required for GPU
+  # }
 
   provisioner "remote-exec" {
     connection {
