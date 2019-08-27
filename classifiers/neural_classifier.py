@@ -5,9 +5,10 @@ from utilities.dataloader import NeuralLoader
 
 
 class Neural:
-    def __init__(self, level, epochs):
+    def __init__(self, level, epochs, splits):
         self.label_level = level
         self.num_epochs = epochs
+        self.num_splits = splits
         self.num_classes = 194
         self.train_data = './data/traindata.parquet'
         self.val_data = './data/valdata.parquet'
@@ -28,7 +29,7 @@ class Neural:
 
     def prepare_training_data(self):
         """ Prepares training, validation, and test data in parquet format """
-        self.data_loader.prepare()
+        self.data_loader.prepare(self.num_splits)
 
     def get_chunks_validation(self):
         """ Gets validation data in chunks
@@ -84,7 +85,7 @@ class Neural:
         for epoch in range(self.num_epochs):
             print(f"Epochs: {epoch+1}/{self.num_epochs}...")
             for iter, (chunk_train, chunk_labels) in enumerate(self.get_chunks()):
-                print(f"Iteration: {iter+1}/100...")
+                print(f"Iteration: {iter+1}/{self.num_splits}...")
                 model.fit(x=chunk_train,
                           y=chunk_labels,
                           epochs=1,
