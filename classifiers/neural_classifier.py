@@ -4,7 +4,7 @@ from utilities.dataloader import NeuralLoader
 
 
 class Neural:
-    def __init__(self, level):
+    def __init__(self, level, epochs):
         self.label_level = level
         self.num_epochs = epochs
         self.num_classes = 194
