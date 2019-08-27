@@ -3,7 +3,7 @@ from classifiers.neural_classifier import Neural
 
 
 if __name__ == '__main__':
-    classifier = Neural(level='subsubcat', epochs=5)
+    classifier = Neural(level='subsubcat', epochs=5, splits=10)
 
     classifier.prepare_training_data()
     classifier.train()
