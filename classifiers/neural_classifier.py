@@ -57,7 +57,7 @@ class Neural:
         model = tf.keras.Sequential()
         model.add(hub_layer)
         model.add(tf.keras.layers.Dense(64, activation='relu'))
-        model.add(keras.layers.Dense(self.num_classes, activation='softmax'))
+        model.add(tf.keras.layers.Dense(self.num_classes, activation='softmax'))
         model.summary()
         model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         return model
