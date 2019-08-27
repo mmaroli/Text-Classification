@@ -2,7 +2,6 @@ import json
 import numpy as np
 import pandas as pd
 import pyarrow as pa
-import xgboost as xgb
 import pyarrow.parquet as pq
 from pymongo import MongoClient
 from sklearn.preprocessing import LabelEncoder
