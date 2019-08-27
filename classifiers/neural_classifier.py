@@ -77,22 +77,36 @@ class Neural:
     def train(self):
         """ Train tensorflow model """
         val_data = self.one_chunk()
-        model = self.build_model()
+        if os.path.exists(self.model_path):
+            model = tf.keras.models.load_model(self.model_path)
+        else:
+            model = self.build_model()
         for epoch in range(self.num_epochs):
             print(f"Epochs: {epoch+1}/{self.num_epochs}...")
             for iter, (chunk_train, chunk_labels) in enumerate(self.get_chunks()):
                 print(f"Iteration: {iter+1}/100...")
-                if not os.path.exists(self.model_path):
-                    model.fit(x=chunk_train,
-                              y=chunk_labels,
-                              epochs=1,
-                              validation_data=val_data,
-                              verbose=1)
-                else:
-                    model = tf.keras.models.load_model(self.model_path)
-                    model.fit(x=chunk_train,
-                              y=chunk_labels,
-                              epochs=1,
-                              validation_data=val_data,
-                              verbose=1)
+                model.fit(x=chunk_train,
+                          y=chunk_labels,
+                          epochs=1,
+                          batch_size=32,
+                          validation_data=val_data,
+                          verbose=1)
                 model.save(self.model_path)
+
+
+                # if not os.path.exists(self.model_path):
+                #     model.fit(x=chunk_train,
+                #               y=chunk_labels,
+                #               epochs=1,
+                #               batch_size=32,
+                #               validation_data=val_data,
+                #               verbose=1)
+                # else:
+                #     model = tf.keras.models.load_model(self.model_path)
+                #     model.fit(x=chunk_train,
+                #               y=chunk_labels,
+                #               epochs=1,
+                #               batch_size=32,
+                #               validation_data=val_data,
+                #               verbose=1)
+                # model.save(self.model_path)
