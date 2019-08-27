@@ -198,3 +198,36 @@ class XGBoostLoader:
         embedding_matrix = self.vectorizer.transform(df['text'])
         labels = df[f'{self.level}_labels']
         return embedding_matrix, labels
+
+
+
+
+
+class NeuralLoader(XGBoostLoader):
+    def __init__(self, level):
+        self.level = level
+        self.dataset = './data/dataset.csv'
+        self.dataset_parquet = './data/dataset.parquet'
+        self.encoder = LabelEncoder()
+
+
+    def embedding(self, df):
+        """ Creates embedding matrix for text. Must have 'text' and 'level_labels'
+            column.
+
+        Parameters
+        -----------
+        df: pd.Dataframe
+            Pandas dataframe with shape (m x n). m is number of articles.
+
+        Returns
+        -----------
+        text: np.array
+            Numpy array with text.
+        labels: pd.Series
+            Series with dimensions (m x 1).
+        """
+        df.dropna(subset=['text'], inplace=True)
+        text = np.array(df['text'])
+        labels = np.array(df[f'{self.level}_labels'])
+        return text, labels
