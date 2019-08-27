@@ -92,21 +92,3 @@ class Neural:
                           validation_data=val_data,
                           verbose=1)
                 model.save(self.model_path)
-
-
-                # if not os.path.exists(self.model_path):
-                #     model.fit(x=chunk_train,
-                #               y=chunk_labels,
-                #               epochs=1,
-                #               batch_size=32,
-                #               validation_data=val_data,
-                #               verbose=1)
-                # else:
-                #     model = tf.keras.models.load_model(self.model_path)
-                #     model.fit(x=chunk_train,
-                #               y=chunk_labels,
-                #               epochs=1,
-                #               batch_size=32,
-                #               validation_data=val_data,
-                #               verbose=1)
-                # model.save(self.model_path)
