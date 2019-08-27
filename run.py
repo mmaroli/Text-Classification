@@ -1,10 +1,8 @@
 from utilities.dataloader import DataLoader, XGBoostLoader
-from classifiers.xgboost_classifier import XGBoostClassifier
+from classifiers.neural_classifier import Neural
 
 
 if __name__ == '__main__':
-    classifier = XGBoostClassifier(level='subsubcat', epochs=5)
+    classifier = Neural(level='subsubcat', epochs=5)
 
     classifier.prepare_training_data()
-    classifier.fit_tfidf()
-    classifier.train()
