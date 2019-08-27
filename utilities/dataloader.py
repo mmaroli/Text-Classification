@@ -157,7 +157,7 @@ class XGBoostLoader:
         return train_df, val_df, test_df
 
 
-    def prepare(self):
+    def prepare(self, num_splits):
         """ Prepares data with train-val-test split.
 
         Returns
@@ -167,9 +167,9 @@ class XGBoostLoader:
         df = self.encode_labels()
         train_df, val_df, test_df = self.split_dataset(df)
 
-        self.write_parquet(np.array_split(train_df, 10), 'traindata.parquet')
-        self.write_parquet(np.array_split(val_df, 10), 'valdata.parquet')
-        self.write_parquet(np.array_split(test_df, 10), 'testdata.parquet')
+        self.write_parquet(np.array_split(train_df, num_splits), 'traindata.parquet')
+        self.write_parquet(np.array_split(val_df, num_splits), 'valdata.parquet')
+        self.write_parquet(np.array_split(test_df, num_splits), 'testdata.parquet')
 
 
 
