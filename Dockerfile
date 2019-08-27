@@ -1,11 +1,12 @@
-FROM nvidia/cuda:9.1-devel-ubuntu16.04
+FROM nvidia/cuda:10.1-devel-ubuntu16.04
 WORKDIR /app
 COPY . /app
 
-ENV CUDNN_VERSION 7.1.2.21
+ENV CUDNN_VERSION 7.6.3.30
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libcudnn7=$CUDNN_VERSION-1+cuda9.1 \
+    libcudnn7=$CUDNN_VERSION-1+cuda10.1 \
+libcudnn7-dev=$CUDNN_VERSION-1+cuda10.1 \
 && \
     apt-mark hold libcudnn7 && \
     rm -rf /var/lib/apt/lists/*
