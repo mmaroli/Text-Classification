@@ -1,0 +1,14 @@
+version: '2.3'
+services:
+  ad-category-predictor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ad-category-predictor:predictor
+    container_name: ad-category-predictor-container
+    volumes:
+      - .:/app
+    command: /bin/bash
+    tty: true
+    ports:
+      - "5000:5000"
