@@ -17,6 +17,10 @@ build:
 shell:
 	sudo docker exec -it "ad-category-predictor-container" bash
 
+run:
+	rm -r logs && mkdir logs
+	sudo docker exec -it "ad-category-predictor-container" gunicorn --access-logfile logs/gunicorn-access.log --error-logfile logs/gunicorn-error.log --bind 0.0.0.0:5000 wsgi
+
 down:
 	@echo "Cleaning up..."
 	sudo docker-compose down --remove-orphans
