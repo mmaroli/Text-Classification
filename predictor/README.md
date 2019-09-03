@@ -9,7 +9,7 @@ for scalability.
 
 ## Instructions to Run on Kubernetes
 + `kubectl apply -f deployment.yaml`
-+ `kubectl expose deployment ad-category-classifier-deployment --type=LoadBalancer --name=classifier-api --port=80 --target-port=5000`
++ `kubectl expose deployment ad-category-classifier-deployment --type=LoadBalancer --name=classifier-api`
 
 
 ## Delete Deployments
