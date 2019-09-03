@@ -11,3 +11,7 @@ RUN ln -s /usr/bin/python3.6 /usr/bin/python
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+RUN mkdir /app/logs
+EXPOSE 5000
+CMD ["gunicorn", "--access-logfile", "logs/gunicorn-access.log", "--error-logfile", "logs/gunicorn-error.log", "--bind", "0.0.0.0:5000", "wsgi"]
