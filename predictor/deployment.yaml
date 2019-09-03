@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ad-category-classifier-deployment
+spec:
+  selector:
+    matchLabels:
+      app: ad-category-classifier
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: ad-category-classifier
+    spec:
+      containers:
+      - name: ad-category-classifier
+        image: mmaroli/ad-category:classifier
+        ports:
+        - containerPort: 5000
