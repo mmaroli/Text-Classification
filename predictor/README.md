@@ -18,3 +18,8 @@ for scalability.
 
 ## Tear Down Cluster
 + `kubernetes/cluster/kube-down.sh`
+
+
+# API Usage
++ `curl -i -H "Content-Type: application/json" -X POST -d '{"text": "TEXT GOES HERE"}' http://<external-ip>:5000/ad-category/api/v1.0/classifier`
++ `requests.post(url='http://<external-ip>:5000/ad-category/api/v1.0/classifier', json={'text': 'Hello World'})`
